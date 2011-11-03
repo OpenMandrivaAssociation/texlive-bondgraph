@@ -1,3 +1,9 @@
+# revision 21670
+# category Package
+# catalog-ctan /macros/latex/contrib/bondgraph
+# catalog-date 2011-03-09 21:09:16 +0100
+# catalog-license lppl1.3
+# catalog-version 1.0
 Name:		texlive-bondgraph
 Version:	1.0
 Release:	1
@@ -40,6 +46,7 @@ The package draws bond graphs using PGF and TikZ.
 %doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_arrows.tex
 %doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_example.pdf
 %doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_example.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -50,3 +57,5 @@ The package draws bond graphs using PGF and TikZ.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
