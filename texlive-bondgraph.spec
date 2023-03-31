@@ -1,6 +1,6 @@
 Name:		texlive-bondgraph
 Version:	21670
-Release:	1
+Release:	2
 Summary:	Create bond graph figures in LaTeX documents
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/bondgraph
