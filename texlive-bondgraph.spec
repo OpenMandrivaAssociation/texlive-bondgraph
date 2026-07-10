@@ -1,43 +1,22 @@
-Name:		texlive-bondgraph
-Version:	21670
-Release:	2
+%global tl_name bondgraph
+%global tl_revision 21670
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	Create bond graph figures in LaTeX documents
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/bondgraph
-License:	LPPL1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bondgraph.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/bondgraph.doc.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bondgraph.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/bondgraph.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
 The package draws bond graphs using PGF and TikZ.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/bondgraph/bondgraph.sty
-%doc %{_texmfdistdir}/doc/latex/bondgraph/License.txt
-%doc %{_texmfdistdir}/doc/latex/bondgraph/README
-%doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_arrows.tex
-%doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_example.pdf
-%doc %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_example.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc %{buildroot}%{_texmfdistdir}
